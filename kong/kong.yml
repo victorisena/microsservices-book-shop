@@ -1,0 +1,19 @@
+_format_version: "3.0"
+
+services:
+- name: my-service
+  url: http://localhost:3000/api
+  routes:
+  - name: my-route
+    paths:
+    - /
+
+consumers:
+- username: my-user
+
+- name: request-transformer
+  config:
+    add:
+      headers:
+        - content-type:application/json
+        - accept:application/json
