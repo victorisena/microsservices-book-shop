@@ -2,18 +2,24 @@ _format_version: "3.0"
 
 services:
 - name: my-service
-  url: http://localhost:3000/api
+  url: http://hello-service/api
   routes:
-  - name: my-route
+  - name: hello-route
     paths:
     - /
 
 consumers:
-- username: my-user
+- username: hello-user
 
+plugins:
 - name: request-transformer
   config:
     add:
       headers:
         - content-type:application/json
         - accept:application/json
+
+upstreams:
+  - name: "hello-service"
+    targets:
+    - target: 172.17.0.1:3000
